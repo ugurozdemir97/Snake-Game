@@ -1,0 +1,15 @@
+{
+    "Selected": "0",
+    "Players": {
+        "0": {
+            "Name": "ExamplePlayer",
+            "Scores": {
+                "Easy": 0,
+                "Medium": 0,
+                "Hard": 0,
+                "Extreme": 19,
+                "Highscore": 4
+            }
+        }
+    }
+}
