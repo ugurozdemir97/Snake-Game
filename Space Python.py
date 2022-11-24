@@ -59,15 +59,20 @@ class App(QMainWindow):
 
         # ----------- FOR GAME MUSIC ---------- #
 
-        path1 = "./Musics/Kubbi - Up In My Jam.mp3"
-        path2 = "./Musics/Kubbi - Digestive biscuit.mp3"
-        url1 = QUrl.fromLocalFile(path1)
-        url2 = QUrl.fromLocalFile(path2)
+        self.main_menu_music = QMediaPlaylist()
+        self.game_music = QMediaPlaylist()
 
-        self.main_menu_music = QMediaContent(url1)
-        self.game_music = QMediaContent(url2)
+        url1 = QUrl.fromLocalFile("./Musics/Kubbi - Up In My Jam.mp3")
+        url2 = QUrl.fromLocalFile("./Musics/Kubbi - Digestive biscuit.mp3")
+
+        self.main_menu_music.addMedia(QMediaContent(url1))
+        self.game_music.addMedia(QMediaContent(url2))
+
+        self.main_menu_music.setPlaybackMode(QMediaPlaylist.Loop)
+        self.game_music.setPlaybackMode(QMediaPlaylist.Loop)
 
         self.music = QMediaPlayer()
+
         self.play_music()
 
         # ----------------------- VARIABLES ---------------------- #
@@ -146,9 +151,9 @@ class App(QMainWindow):
             self.music.stop()
         else:
             if self.ui.stackedWidget.currentIndex() != 2:
-                self.music.setMedia(self.main_menu_music)
+                self.music.setPlaylist(self.main_menu_music)
             else:
-                self.music.setMedia(self.game_music)
+                self.music.setPlaylist(self.game_music)
             self.music.play()
 
     # --------------------------------------------------------------------------------------------------------------- #
